@@ -1,8 +1,8 @@
-dashboard
+?dashboard
 	?title bar
-		left
-			logo icon
-			title
+		*left
+			*logo icon
+			*title
 		right
 			theme toggle
 			global currency selector
