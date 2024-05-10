@@ -1,0 +1,65 @@
+?list of cryptos (top 10)
+	*icon, name
+	*current value, market cap
+	*hour, day, week, month, year
+	*currency selector with zar as default
+	*list should update realtime (polling?)
+	!expanding
+		a view more button at the bottom expands to 100
+		scrolling on the list also automatically expands
+		reaching the bottom of the list will load the next 100
+		buttons to skip up/down by certain numbers?
+		button for back to top or to bottom?
+	!option to reset everything?
+	*light and dark themes?
+	*can sort by any field
+	*can also filter by any appropriate field
+
+?default list view can just cater for week
+	*toggles for more info and graph view
+	*dropdown for graph view
+
+?list currencies
+	*defaults to global
+	*each currency can be changed
+	*a single crypto can be selected for value additionally
+	*option to reset all list item changes
+
+?expanded view
+	graph bar moves to top
+	data expands to main view
+	additional data fades in
+	buttons on left/right to navigate between coins
+	shows chevrons and coin icon
+	hover shows coin name
+	buttons can change based on graph order
+
+?currencies in detailed view
+	can add as many as the user wants
+	same for crypto values
+	view should be saved automatically
+	option to reset view
+	can add additional currencies to compare to
+
+?historical data in detailed view
+	coin price, market cap, trading volume, etc.
+	add freely add or remove fields
+	set granularity on each field
+
+responsiveness
+	must scale nicely to 720p lowest on desktop
+	must scale to common tablet sizes
+	must scale for mobile
+	must work well in a portrait view as well
+
+?hosting
+	initial private github repo
+	actions setup to build and deploy to github pages
+
+caching
+	don't know how to use react redux
+	will probably just use local storage
+		with a management class
+
+meta mask
+	will look into if there's enough time left
