@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { ReactNode } from "react";
+
 import "./globals.css";
+
+interface RootLayoutProps {
+  children: ReactNode;
+}
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -10,14 +16,10 @@ export const metadata: Metadata = {
     "Simple app for viewing information about and comparing cryptocurrencies",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
-  );
-}
+const RootLayout = (props: Readonly<RootLayoutProps>) => (
+  <html lang="en">
+    <body className={inter.className}>{props.children}</body>
+  </html>
+);
+
+export default RootLayout;
