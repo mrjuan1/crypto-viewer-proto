@@ -1,0 +1,35 @@
+@keyframes appear {
+  from {
+    top: -4rem;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+.titlebar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  background: var(--surface);
+
+  height: 4rem;
+  padding: 1rem;
+
+  position: relative;
+
+  font-size: 1.5rem;
+  font-weight: 600;
+
+  animation: appear ease 0.5s;
+}
+
+.logo {
+  background: url("/logo.png") round;
+
+  width: 2.5rem;
+  height: 2.5rem;
+}
