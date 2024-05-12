@@ -1,8 +1,9 @@
-import styles from "./loader.module.css";
+import { ReactNode } from "react";
 
-const Loader = () => (
+import styles from "./styles.module.css";
+
+const Loader = (): ReactNode => (
   <div className={styles.container}>
-    <div className={styles.background}></div>
     <div className={styles.loader}></div>
   </div>
 );

@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-import styles from "./titlebar.module.css";
+import styles from "./styles.module.css";
 
 interface TitlebarProps {
   title: string;

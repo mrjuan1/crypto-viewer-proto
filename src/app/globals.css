@@ -14,6 +14,7 @@
   --warning: #f5a97f; /* peach */
   --error: #ed8796; /* red */
 
+  --logo-url: url("/logo.png");
   --logo-colour: #eed49f /* yellow */;
 }
 

@@ -1,5 +1,7 @@
 "use client";
 
+import Dashboard from "@components/dashboard";
+import Titlebar from "@components/titlebar";
 import { ReactNode } from "react";
 import { SWRConfig } from "swr";
 
@@ -41,7 +43,10 @@ const Main = (props: MainProps): ReactNode => {
   };
 
   return (
-    <SWRConfig value={{ fetcher }}>titlebar and dashboard go here</SWRConfig>
+    <SWRConfig value={{ fetcher }}>
+      <Titlebar title={props.title} />
+      <Dashboard />
+    </SWRConfig>
   );
 };
 

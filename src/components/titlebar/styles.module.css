@@ -28,7 +28,7 @@
 }
 
 .logo {
-  background: url("/logo.png") round;
+  background: var(--logo-url) round;
 
   width: 2.5rem;
   height: 2.5rem;

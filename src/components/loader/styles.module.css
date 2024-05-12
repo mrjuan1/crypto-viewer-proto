@@ -92,26 +92,8 @@
   }
 }
 
-.container,
-.background {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-
 .container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
   animation: fade-in ease 0.3s;
-}
-
-.background {
-  background: var(--shadow);
-  opacity: 0.5;
 }
 
 .loader {

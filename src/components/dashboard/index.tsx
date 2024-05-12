@@ -1,10 +1,10 @@
 import { ReactNode } from "react";
 
-import styles from "./dashboard.module.css";
+import styles from "./styles.module.css";
 
 const Dashboard = (): ReactNode => (
   <div className={styles.dashboard}>
-    <div className={styles.content}>Dashboard content</div>
+    <div className={styles.content}>list goes here</div>
   </div>
 );
 
