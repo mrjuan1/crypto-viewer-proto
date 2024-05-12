@@ -46,11 +46,11 @@
 	add freely add or remove fields
 	set granularity on each field
 
-responsiveness
-	must scale nicely to 720p lowest on desktop
-	must scale to common tablet sizes
-	must scale for mobile
-	must work well in a portrait view as well
+*responsiveness
+	*must scale nicely to 720p lowest on desktop
+	*must scale to common tablet sizes
+	*must scale for mobile
+	*must work well in a portrait view as well
 
 ?hosting
 	initial private github repo

@@ -18,9 +18,23 @@
   padding: 1rem 0;
 
   opacity: 0;
+  transition: all ease 0.3s;
 
   animation: fade-in ease 0.5s;
   animation-fill-mode: forwards;
+}
+
+.container:last-child {
+  border-bottom: none;
+}
+
+.container:hover {
+  background: var(--surface);
+
+  padding: 1rem;
+  scale: 1.1;
+
+  cursor: pointer;
 }
 
 .container * {

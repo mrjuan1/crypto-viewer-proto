@@ -9,13 +9,12 @@
 				searchable drop-down
 				can be closed with escape key
 				can be closed by clicking outside of it
-	?content section
-		spinner will show while the list is loading
-		will show a message with the spinner after a while
-		once loaded, list will fade in 10 items, one at a time
+	*content section
+		*spinner will show while the list is loading
+		*once loaded, list will fade in 10 items, one at a time
 
 !list title (list options)
-	?crypto name and value
+	*crypto name and value
 		can change currency to compare to
 		can add another crypto's value
 	granular changes with option to add/remove some
@@ -23,16 +22,14 @@
 	graph granularity with option to change or hide it
 	can drag to re-arrange all fields after the title
 	can search by name and sort by all available fields
-	small reset icon at the top-right
-		if the list item has had any changes made
 	button to reset all list options to defaults
 	save/load list filter options?
 		remember last options
 
-!list items
-	crypto icon
-	name next to it on top
-	current value underneath
-	next to that, changes over the last day and week
+?list items
+	*crypto icon
+	*name next to it on top
+	*current value underneath
+	*next to that, changes over the last day and week
 	at the end, graph for the week
 	icon button to indicate more information can be viewed
