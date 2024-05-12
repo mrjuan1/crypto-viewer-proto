@@ -1,19 +1,48 @@
+import DetailsView from "@components/details";
 import List from "@components/list";
 import { ListItemSelectFunc } from "@components/list-item";
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 
 import styles from "./styles.module.css";
 
-interface DashboardProps {
-  onListItemSelect: ListItemSelectFunc;
-}
+const Dashboard = (): ReactNode => {
+  const [detailsOpacity, setDetailsOpacity] = useState<number>(0);
+  const [showDetails, setShowDetails] = useState<boolean>(false);
+  const [selectedCoinId, setSelectedCoinId] = useState<string>("");
 
-const Dashboard = (props: DashboardProps): ReactNode => (
-  <div className={styles.dashboard}>
-    <div className={styles.content}>
-      <List onListItemSelect={props.onListItemSelect} />
+  const listItemSelectHandler: ListItemSelectFunc = (coinId: string): void => {
+    setDetailsOpacity(1);
+    setShowDetails(true);
+    setSelectedCoinId(coinId);
+  };
+
+  const detailsCloseRequestHandler = (): void => {
+    setDetailsOpacity(0);
+
+    setTimeout(() => {
+      setShowDetails(false);
+    }, 500);
+  };
+
+  return (
+    <div className={styles.dashboard}>
+      <div className={styles.content}>
+        <List onListItemSelect={listItemSelectHandler} />
+
+        <div
+          className={styles["details-container"]}
+          style={{ opacity: detailsOpacity }}
+        >
+          {showDetails && (
+            <DetailsView
+              coinId={selectedCoinId}
+              onCloseRequest={detailsCloseRequestHandler}
+            />
+          )}
+        </div>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default Dashboard;
