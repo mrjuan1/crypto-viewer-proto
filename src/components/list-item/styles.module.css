@@ -19,12 +19,51 @@
   animation-fill-mode: forwards;
 }
 
+.container * {
+  width: 100%;
+
+  font-weight: 600;
+  text-wrap: nowrap;
+  text-overflow: ellipsis;
+
+  overflow: hidden;
+}
+
 .logo {
-  width: 3rem;
+  min-width: 3rem;
+  max-width: 3rem;
   height: 3rem;
+}
+
+.name-and-price {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .name {
   font-size: 1.5rem;
-  font-weight: 600;
+}
+
+.price,
+.market-cap {
+  color: var(--primary);
+}
+
+.price-24h {
+  width: 50%;
+}
+
+.percent-24h,
+.percent-7d {
+  width: 50%;
+  text-align: right;
+}
+
+.increased {
+  color: var(--accent);
+}
+
+.decreased {
+  color: var(--error);
 }

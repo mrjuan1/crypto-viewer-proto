@@ -1,11 +1,10 @@
 "use client";
 
+import ListItem from "@components/list-item";
 import Loader from "@components/loader";
 import { ReactNode, useEffect, useState } from "react";
 import useSWR from "swr";
-
 import styles from "./styles.module.css";
-import ListItem from "@components/list-item";
 
 interface CoinMarketResponse {
   id: string;
@@ -18,6 +17,8 @@ interface CoinMarketResponse {
   price_change_percentage_7d_in_currency: number;
 }
 
+const LIST_ITEM_FADE_MS_MULTIPLIER: number = 125;
+
 const List = (): ReactNode => {
   const [listItems, setListItems] = useState<ReactNode[]>([]);
 
@@ -25,7 +26,7 @@ const List = (): ReactNode => {
     "/coins/markets?vs_currency=zar&per_page=10&price_change_percentage=7d&precision=2",
   );
 
-  useEffect(() => {
+  useEffect((): void => {
     // TODO: Implement visual error notification(s)
     if (error) {
       console.error(error);
@@ -38,13 +39,20 @@ const List = (): ReactNode => {
     }
 
     if (data) {
-      const listItemComponents: ReactNode[] = data.map(
+      const listItemComponents: ReactNode[] = data.map<ReactNode>(
         (entry: CoinMarketResponse, index: number) => (
           <ListItem
             key={`list-item-${index}`}
-            fadeInDelay={`${index * 125}ms`}
+            fadeInDelay={`${index * LIST_ITEM_FADE_MS_MULTIPLIER}ms`}
             logoURL={entry.image}
             name={entry.name}
+            price={entry.current_price}
+            changes={{
+              price24h: entry.price_change_24h,
+              pricePercent24h: entry.price_change_percentage_24h,
+              pricePercent7d: entry.price_change_percentage_7d_in_currency,
+            }}
+            marketCap={entry.market_cap}
           />
         ),
       );
@@ -52,11 +60,6 @@ const List = (): ReactNode => {
       setListItems(listItemComponents);
     }
   }, [isLoading, error, data]);
-
-  // cache list of coins of it doesn't exist
-  // fetch top 10 coins based off filter data
-  // make component for displaying coin row and display one coin's row for now
-  // update this component based off the display settings
 
   return (
     <div className={styles.container}>
