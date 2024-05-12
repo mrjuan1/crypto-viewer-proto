@@ -14,6 +14,7 @@ interface APIDetails {
 
 interface MainProps {
   title: string;
+  logoURL: string;
   apiDetails: APIDetails;
 }
 
@@ -49,7 +50,7 @@ const Main = (props: MainProps): ReactNode => {
 
   return (
     <SWRConfig value={{ fetcher }}>
-      <Titlebar title={props.title} />
+      <Titlebar title={props.title} logoURL={props.logoURL} />
       <Dashboard onListItemSelect={viewCoin} />
     </SWRConfig>
   );

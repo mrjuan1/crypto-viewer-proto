@@ -28,8 +28,6 @@
 }
 
 .logo {
-  background: var(--logo-url) round;
-
   min-width: 2.5rem;
   max-width: 2.5rem;
   height: 2.5rem;
