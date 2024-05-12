@@ -1,6 +1,7 @@
 "use client";
 
 import Dashboard from "@components/dashboard";
+import { ListItemSelectFunc } from "@components/list-item";
 import Titlebar from "@components/titlebar";
 import { ReactNode } from "react";
 import { SWRConfig } from "swr";
@@ -15,6 +16,10 @@ interface MainProps {
   title: string;
   apiDetails: APIDetails;
 }
+
+const viewCoin: ListItemSelectFunc = (coinId: string): void => {
+  console.log(coinId);
+};
 
 const Main = (props: MainProps): ReactNode => {
   const fetcher = async (endpoint: string): Promise<unknown> => {
@@ -45,7 +50,7 @@ const Main = (props: MainProps): ReactNode => {
   return (
     <SWRConfig value={{ fetcher }}>
       <Titlebar title={props.title} />
-      <Dashboard />
+      <Dashboard onListItemSelect={viewCoin} />
     </SWRConfig>
   );
 };

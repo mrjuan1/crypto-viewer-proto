@@ -1,10 +1,14 @@
 "use client";
 
-import ListItem from "@components/list-item";
+import ListItem, { ListItemSelectFunc } from "@components/list-item";
 import Loader from "@components/loader";
 import { ReactNode, useEffect, useState } from "react";
 import useSWR from "swr";
 import styles from "./styles.module.css";
+
+interface ListProps {
+  onListItemSelect: ListItemSelectFunc;
+}
 
 interface CoinMarketResponse {
   id: string;
@@ -19,7 +23,8 @@ interface CoinMarketResponse {
 
 const LIST_ITEM_FADE_MS_MULTIPLIER: number = 125;
 
-const List = (): ReactNode => {
+const List = (props: ListProps): ReactNode => {
+  const [haveLoader, setHaveLoader] = useState<boolean>(true);
   const [listItems, setListItems] = useState<ReactNode[]>([]);
 
   const { isLoading, error, data } = useSWR<CoinMarketResponse[]>(
@@ -27,6 +32,14 @@ const List = (): ReactNode => {
   );
 
   useEffect((): void => {
+    if (isLoading) {
+      return;
+    } else {
+      // Fade out animation for loader is 500ms.
+      // Giving it double that before nuking it altogether
+      setTimeout(() => setHaveLoader(false), 1000);
+    }
+
     // TODO: Implement visual error notification(s)
     if (error) {
       console.error(error);
@@ -44,6 +57,7 @@ const List = (): ReactNode => {
           <ListItem
             key={`list-item-${index}`}
             fadeInDelay={`${index * LIST_ITEM_FADE_MS_MULTIPLIER}ms`}
+            coinId={entry.id}
             logoURL={entry.image}
             name={entry.name}
             price={entry.current_price}
@@ -53,21 +67,24 @@ const List = (): ReactNode => {
               pricePercent7d: entry.price_change_percentage_7d_in_currency,
             }}
             marketCap={entry.market_cap}
+            onSelect={props.onListItemSelect}
           />
         ),
       );
 
       setListItems(listItemComponents);
     }
-  }, [isLoading, error, data]);
+  }, [isLoading, error, data, props.onListItemSelect]);
 
   return (
     <div className={styles.container}>
-      <div
-        className={`${styles.loader}${isLoading ? "" : ` ${styles["loader-fade-out"]}`}`}
-      >
-        <Loader />
-      </div>
+      {haveLoader && (
+        <div
+          className={`${styles.loader}${isLoading ? "" : ` ${styles["loader-fade-out"]}`}`}
+        >
+          <Loader />
+        </div>
+      )}
 
       <div className={styles.list}>{listItems}</div>
     </div>

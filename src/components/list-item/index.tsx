@@ -2,6 +2,8 @@ import { ReactNode } from "react";
 
 import styles from "./styles.module.css";
 
+export type ListItemSelectFunc = (coinId: string) => void;
+
 interface ListItemPriceChanges {
   price24h: number;
   pricePercent24h: number;
@@ -10,17 +12,20 @@ interface ListItemPriceChanges {
 
 interface ListItemProps {
   fadeInDelay?: string;
+  coinId: string;
   logoURL: string;
   name: string;
   price: number;
   changes: ListItemPriceChanges;
   marketCap: number;
+  onSelect: ListItemSelectFunc;
 }
 
 const ListItem = (props: ListItemProps): ReactNode => (
   <div
     className={styles.container}
-    style={{ animationDelay: props.fadeInDelay ?? "unset" }}
+    style={{ animationDelay: props.fadeInDelay }}
+    onClick={(): void => props.onSelect(props.coinId)}
   >
     <div
       className={styles.logo}
