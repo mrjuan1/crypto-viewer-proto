@@ -13,10 +13,12 @@
   height: calc(100vh - 4rem);
   padding: 4rem;
 
+  overflow: hidden;
   transition: padding ease 0.3s;
 }
 
 .content {
+  height: 100%;
   position: relative;
 
   animation: appear ease 0.75s;
