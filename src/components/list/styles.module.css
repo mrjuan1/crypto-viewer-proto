@@ -17,8 +17,6 @@
   bottom: 0;
   left: 0;
   right: 0;
-
-  transition: padding ease 0.5s;
 }
 
 .loader {
@@ -41,9 +39,10 @@
   padding: 0 16%;
 
   position: absolute;
+  transition: padding ease 0.5s;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1200px) {
   .list {
     justify-content: unset;
     padding: 0;

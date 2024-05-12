@@ -9,7 +9,7 @@ interface TitlebarProps {
 const Titlebar = (props: TitlebarProps): ReactNode => (
   <div className={styles.titlebar}>
     <div className={styles.logo}></div>
-    {props.title}
+    <div className={styles.title}>{props.title}</div>
   </div>
 );
 
