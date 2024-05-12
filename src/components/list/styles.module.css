@@ -32,13 +32,14 @@
 .list {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
 
   width: 100%;
   height: 100%;
   padding: 0 16%;
 
   position: absolute;
+
+  overflow-y: auto;
   transition: padding ease 0.5s;
 }
 

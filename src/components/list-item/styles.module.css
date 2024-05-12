@@ -12,7 +12,11 @@
   align-items: center;
   gap: 1.5rem;
 
+  border-bottom: solid 1px var(--surface);
+
   width: 100%;
+  padding: 1rem 0;
+
   opacity: 0;
 
   animation: fade-in ease 0.5s;
@@ -68,25 +72,25 @@
   color: var(--error);
 }
 
-@media only screen and (max-width: 660px) {
+@media only screen and (max-width: 800px) {
   .market-cap {
     display: none;
   }
 }
 
-@media only screen and (max-width: 530px) {
+@media only screen and (max-width: 590px) {
   .percent-7d {
     display: none;
   }
 }
 
-@media only screen and (max-width: 430px) {
+@media only screen and (max-width: 490px) {
   .percent-24h {
     display: none;
   }
 }
 
-@media only screen and (max-width: 340px) {
+@media only screen and (max-width: 380px) {
   .price-24h {
     display: none;
   }
