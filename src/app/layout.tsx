@@ -13,7 +13,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Cryptocurrencies",
   description:
-    "Simple app for viewing information about and comparing cryptocurrencies",
+    "Simple app for viewing information about cryptocurrencies",
 };
 
 const RootLayout = (props: Readonly<RootLayoutProps>) => (
