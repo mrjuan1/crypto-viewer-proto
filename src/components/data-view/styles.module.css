@@ -37,15 +37,33 @@
   height: calc(100% - 4rem);
   padding: 1rem;
 
+  font-size: 1.2rem;
+  font-weight: 500;
+
   overflow: auto;
+}
+
+.stats {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 1rem;
+  padding-top: 1rem;
+}
+
+.stat-title {
+  font-size: 1.5em;
+  font-weight: 600;
 }
 
 .info-bar {
   display: flex;
   gap: 0.5rem;
 
-  font-size: 1.2rem;
-  font-weight: 500;
+  border-top: solid 1px var(--foreground);
+  padding-top: 1rem;
+  margin-top: 1rem;
 }
 
 .links {
@@ -54,6 +72,14 @@
   gap: 0.5rem;
 
   margin-left: auto;
+}
+
+@media only screen and (max-width: 1010px) {
+  .stats {
+    flex-direction: column;
+    align-items: baseline;
+    gap: 1rem;
+  }
 }
 
 @media only screen and (max-width: 880px) {
@@ -66,7 +92,7 @@
   }
 }
 
-@media only screen and (max-width: 380px) {
+@media only screen and (max-width: 420px) {
   .info-bar {
     flex-direction: column;
     align-items: center;

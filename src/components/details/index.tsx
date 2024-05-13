@@ -7,6 +7,7 @@ import styles from "./styles.module.css";
 
 interface DetailsViewProps {
   coinId: string;
+  currency: string;
   onCloseRequest: () => void;
 }
 
@@ -51,6 +52,7 @@ const DetailsView = (props: DetailsViewProps): ReactNode => {
           ) : (
             <DetailsDataView
               data={data}
+              currency={props.currency}
               onCloseRequest={props.onCloseRequest}
             />
           )}

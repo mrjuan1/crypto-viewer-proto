@@ -7,6 +7,7 @@ import useSWR from "swr";
 import styles from "./styles.module.css";
 
 interface ListProps {
+  currency: string;
   onListItemSelect: ListItemSelectFunc;
 }
 
@@ -28,7 +29,7 @@ const List = (props: ListProps): ReactNode => {
   const [listItems, setListItems] = useState<ReactNode[]>([]);
 
   const { isLoading, error, data } = useSWR<CoinMarketResponse[]>(
-    "/coins/markets?vs_currency=zar&per_page=10&price_change_percentage=7d&precision=2",
+    `/coins/markets?vs_currency=${props.currency}&per_page=10&price_change_percentage=7d&precision=2`,
   );
 
   useEffect((): void => {
@@ -60,6 +61,7 @@ const List = (props: ListProps): ReactNode => {
             coinId={entry.id}
             logoURL={entry.image}
             name={entry.name}
+            currency={props.currency}
             price={entry.current_price}
             changes={{
               price24h: entry.price_change_24h,
@@ -74,7 +76,7 @@ const List = (props: ListProps): ReactNode => {
 
       setListItems(listItemComponents);
     }
-  }, [isLoading, error, data, props.onListItemSelect]);
+  }, [isLoading, error, data, props.currency, props.onListItemSelect]);
 
   return (
     <div className={styles.container}>

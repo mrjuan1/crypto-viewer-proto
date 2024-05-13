@@ -5,7 +5,11 @@ import { ReactNode, useState } from "react";
 
 import styles from "./styles.module.css";
 
-const Dashboard = (): ReactNode => {
+interface DashboardProps {
+  currency: string;
+}
+
+const Dashboard = (props: DashboardProps): ReactNode => {
   const [detailsOpacity, setDetailsOpacity] = useState<number>(0);
   const [showDetails, setShowDetails] = useState<boolean>(false);
   const [selectedCoinId, setSelectedCoinId] = useState<string>("");
@@ -27,7 +31,7 @@ const Dashboard = (): ReactNode => {
   return (
     <div className={styles.dashboard}>
       <div className={styles.content}>
-        <List onListItemSelect={listItemSelectHandler} />
+        <List currency={props.currency} onListItemSelect={listItemSelectHandler} />
 
         <div
           className={styles["details-container"]}
@@ -36,6 +40,7 @@ const Dashboard = (): ReactNode => {
           {showDetails && (
             <DetailsView
               coinId={selectedCoinId}
+              currency={props.currency}
               onCloseRequest={detailsCloseRequestHandler}
             />
           )}
