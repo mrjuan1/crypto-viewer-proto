@@ -88,18 +88,19 @@ const DetailsDataView = (props: DetailsDataViewProps): ReactNode => {
     </IconButton>
   );
 
-  const currencyField = (fieldName: string): string => {
+  const marketDataField = (fieldName: string): any => {
     const marketData: KeyPair<any> = props.data.market_data; // oof, there has to be a better way...
-    return `${currency} ${marketData[fieldName][props.currency].toLocaleString()}`;
+    return marketData[fieldName][props.currency];
   };
 
-  const currencyAndPercentField = (fieldName: string): string => {
-    const currency: string = currencyField(`${fieldName}_in_currency`);
+  const currencyField = (fieldName: string): string => {
+    const value = marketDataField(fieldName);
+    return `${currency} ${value.toLocaleString()}`;
+  };
 
-    const marketData: KeyPair<any> = props.data.market_data; // oof, there has to be a better way...
-    const percent: string = marketData[fieldName].toLocaleString();
-
-    return `${currency} (${percent}%)`;
+  const percentField = (fieldName: string): string => {
+    const value = marketDataField(fieldName);
+    return `${value > 0 ? "+" : ""}${value.toLocaleString()}%`;
   };
 
   return (
@@ -129,37 +130,59 @@ const DetailsDataView = (props: DetailsDataViewProps): ReactNode => {
         <div className={styles.stats}>
           <Stat
             label="24 hours:"
-            valueChange={props.data.market_data.price_change_percentage_24h}
+            valueChange={marketDataField(
+              "price_change_percentage_24h_in_currency",
+            )}
           >
-            {currencyAndPercentField("price_change_percentage_24h")}
+            {percentField("price_change_percentage_24h_in_currency")}
+            &nbsp;({currencyField("price_change_24h_in_currency")})
           </Stat>
 
           <Stat
             label="7 days:"
-            valueChange={props.data.market_data.price_change_percentage_7d}
+            valueChange={marketDataField(
+              "price_change_percentage_7d_in_currency",
+            )}
           >
-            {currencyAndPercentField("price_change_percentage_7d")}
+            {percentField("price_change_percentage_7d_in_currency")}
           </Stat>
 
           <Stat
             label="30 days:"
-            valueChange={props.data.market_data.price_change_percentage_30d}
+            valueChange={marketDataField(
+              "price_change_percentage_30d_in_currency",
+            )}
           >
-            {currencyAndPercentField("price_change_percentage_30d")}
+            {percentField("price_change_percentage_30d_in_currency")}
           </Stat>
 
           <Stat
             label="1 year:"
-            valueChange={props.data.market_data.price_change_percentage_1y}
+            valueChange={marketDataField(
+              "price_change_percentage_1y_in_currency",
+            )}
           >
-            {currencyAndPercentField("price_change_percentage_1y")}
+            {percentField("price_change_percentage_1y_in_currency")}
+          </Stat>
+        </div>
+
+        <div className={styles.stats}>
+          <div className={styles["stat-title"]}>Market cap changes</div>
+        </div>
+
+        <div className={styles.stats}>
+          <Stat
+            label="24 hours:"
+            valueChange={marketDataField(
+              "market_cap_change_percentage_24h_in_currency",
+            )}
+          >
+            {percentField("market_cap_change_percentage_24h_in_currency")}
+            &nbsp;({currencyField("market_cap_change_24h_in_currency")})
           </Stat>
 
-          {/*market_cap_change_percentage_24h
-          price_change_24h_in_currency
-          price_change_percentage_1h_in_currency
-          market_cap_change_24h_in_currency
-          market_cap_change_percentage_24h_in_currency */}
+          {/* price_change_percentage_1h_in_currency
+          market_cap_change_24h_in_currency */}
         </div>
 
         <div className={styles["info-bar"]}>

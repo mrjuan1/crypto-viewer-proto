@@ -18,7 +18,9 @@
 }
 
 .content {
+  max-width: 1000px;
   height: 100%;
+  margin: auto;
   position: relative;
 
   animation: appear ease 0.75s;
