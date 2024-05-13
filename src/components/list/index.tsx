@@ -29,7 +29,7 @@ interface CoinMarketResponse {
   price_change_percentage_7d_in_currency: number;
 }
 
-const LIST_ITEM_FADE_MS_MULTIPLIER: number = 125;
+const LIST_ITEM_FADE_MS_MULTIPLIER: number = 50;
 
 const List = (props: ListProps): ReactNode => {
   const [itemsPerPage, setItemsPerPage] = useState<number>(10);

@@ -20,7 +20,7 @@
   opacity: 0;
   transition: all ease 0.3s;
 
-  animation: fade-in ease 0.5s;
+  animation: fade-in ease 0.3s;
   animation-fill-mode: forwards;
 }
 
