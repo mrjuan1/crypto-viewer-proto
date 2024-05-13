@@ -39,9 +39,9 @@ body {
   color: var(--foreground);
 }
 
-/* a {
+a {
   color: var(--primary);
-} */
+}
 
 /* @media (prefers-color-scheme: dark) {
   html {

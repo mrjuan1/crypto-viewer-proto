@@ -13,7 +13,9 @@ interface DetailsViewProps {
 const DetailsView = (props: DetailsViewProps): ReactNode => {
   const [haveLoader, setHaveLoader] = useState<boolean>(true);
 
-  const { isLoading, data } = useSWR(`/coins/${props.coinId}`);
+  const { isLoading, data } = useSWR(
+    `/coins/${props.coinId}?localization=false&tickers=false&community_data=false&developer_data=false`,
+  );
 
   useEffect(() => {
     if (!isLoading) {
