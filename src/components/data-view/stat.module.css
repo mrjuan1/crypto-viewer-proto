@@ -1,0 +1,42 @@
+.stat {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.inline-stat {
+  display: flex !important;
+}
+
+.stat-label {
+  color: var(--foreground);
+}
+
+.increased {
+  color: var(--accent);
+}
+
+.decreased {
+  color: var(--error);
+}
+
+@media only screen and (max-width: 1010px) {
+  .stat {
+    display: flex;
+    gap: 0.5rem;
+
+    width: 100%;
+  }
+
+  .stat-label {
+    margin-right: auto;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .stat {
+    display: initial;
+    gap: initial;
+
+    width: initial;
+  }
+}
