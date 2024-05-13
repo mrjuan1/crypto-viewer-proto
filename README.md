@@ -12,6 +12,10 @@ cd crypto-viewer-proto
 bun i # or npm i/yarn if you prefer those
 ```
 
+Copy `.env.example` to `.env`. Next, get a CoinGecko demo API key and store it in you `.env` file.
+
+This will be required for all calls to the CoinGecko demo API.
+
 ## Running dev server
 
 ```sh

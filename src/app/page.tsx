@@ -7,7 +7,7 @@ const Home = () => (
   <main>
     <Main
       title={String(metadata.title)}
-      logoURL="/logo.png"
+      logoURL="logo.png"
       apiDetails={{
         apiBaseURL: process.env["COINGECKO_API_BASE_URL"],
         apiDemoKeyHeader: process.env["COINGECKO_DEMO_API_KEY_HEADER"],
