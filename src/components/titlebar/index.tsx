@@ -8,7 +8,7 @@ interface TitlebarProps {
   actionsArea?: ReactNode;
 }
 
-const Titlebar = (props: TitlebarProps): ReactNode => (
+const Titlebar = (props: TitlebarProps) => (
   <div className={styles.titlebar}>
     {props.logoURL && (
       <div

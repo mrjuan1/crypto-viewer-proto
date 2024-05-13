@@ -31,7 +31,7 @@ interface CoinMarketResponse {
 
 const LIST_ITEM_FADE_MS_MULTIPLIER: number = 50;
 
-const List = (props: ListProps): ReactNode => {
+const List = (props: ListProps) => {
   const [itemsPerPage, setItemsPerPage] = useState<number>(10);
   const [page, setPage] = useState<number>(1);
   const [haveLoader, setHaveLoader] = useState<boolean>(true);
@@ -51,7 +51,7 @@ const List = (props: ListProps): ReactNode => {
     setItemsPerPage(10);
   }, [props.currency]);
 
-  useEffect((): void => {
+  useEffect(() => {
     if (isLoading) {
       return;
     } else {

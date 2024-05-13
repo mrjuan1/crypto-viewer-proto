@@ -9,7 +9,7 @@ interface DashboardProps {
   currency: string;
 }
 
-const Dashboard = (props: DashboardProps): ReactNode => {
+const Dashboard = (props: DashboardProps) => {
   const [detailsOpacity, setDetailsOpacity] = useState<number>(0);
   const [showDetails, setShowDetails] = useState<boolean>(false);
   const [selectedCoinId, setSelectedCoinId] = useState<string>("");
@@ -20,7 +20,7 @@ const Dashboard = (props: DashboardProps): ReactNode => {
     setSelectedCoinId(coinId);
   };
 
-  const detailsCloseRequestHandler = (): void => {
+  const detailsCloseRequestHandler = () => {
     setDetailsOpacity(0);
 
     setTimeout(() => {

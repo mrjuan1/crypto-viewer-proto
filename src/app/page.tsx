@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 import { metadata } from "./layout";
 import Main from "./main";
 
-const Home = (): ReactNode => (
+const Home = () => (
   <main>
     <Main
       title={String(metadata.title)}

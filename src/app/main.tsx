@@ -12,7 +12,7 @@ interface MainProps {
   apiDetails: APIDetails;
 }
 
-const Main = (props: MainProps): ReactNode => {
+const Main = (props: MainProps) => {
   const [currency, setCurrency] = useState<string>("zar");
 
   return (

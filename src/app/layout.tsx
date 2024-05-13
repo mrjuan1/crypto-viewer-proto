@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     "Simple app for viewing information about and comparing cryptocurrencies",
 };
 
-const RootLayout = (props: Readonly<RootLayoutProps>): ReactNode => (
+const RootLayout = (props: Readonly<RootLayoutProps>) => (
   <html lang="en">
     <body className={inter.className}>{props.children}</body>
   </html>

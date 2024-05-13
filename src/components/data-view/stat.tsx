@@ -9,7 +9,7 @@ interface StatProps {
   children: ReactNode;
 }
 
-const Stat = (props: StatProps): ReactNode => {
+const Stat = (props: StatProps) => {
   const [valueClass, setValueClass] = useState<string | undefined>("");
 
   useEffect(() => {

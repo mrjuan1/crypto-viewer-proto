@@ -11,7 +11,7 @@ interface DetailsViewProps {
   onCloseRequest: () => void;
 }
 
-const DetailsView = (props: DetailsViewProps): ReactNode => {
+const DetailsView = (props: DetailsViewProps) => {
   const [haveLoader, setHaveLoader] = useState<boolean>(true);
 
   const { isLoading, data } = useSWR(

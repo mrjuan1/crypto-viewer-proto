@@ -22,7 +22,7 @@ interface ListItemProps {
   onSelect: ListItemSelectFunc;
 }
 
-const ListItem = (props: ListItemProps): ReactNode => {
+const ListItem = (props: ListItemProps) => {
   const [currency, setCurrency] = useState<string>(
     props.currency.toUpperCase(),
   );
@@ -35,7 +35,7 @@ const ListItem = (props: ListItemProps): ReactNode => {
     <div
       className={styles.container}
       style={{ animationDelay: props.fadeInDelay }}
-      onClick={(): void => props.onSelect(props.coinId)}
+      onClick={() => props.onSelect(props.coinId)}
     >
       <div
         className={styles.logo}

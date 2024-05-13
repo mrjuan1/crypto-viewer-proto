@@ -48,7 +48,7 @@ interface DetailsDataViewProps {
   onCloseRequest: () => void;
 }
 
-const DetailsDataView = (props: DetailsDataViewProps): ReactNode => {
+const DetailsDataView = (props: DetailsDataViewProps) => {
   const [repoLinks, setRepoLinks] = useState<ReactNode[]>([]);
   const [currency, setCurrency] = useState<string>(
     props.currency.toUpperCase(),

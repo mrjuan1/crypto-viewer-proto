@@ -7,7 +7,7 @@ interface IconButtonProps {
   children: ReactNode;
 }
 
-const IconButton = (props: IconButtonProps): ReactNode => {
+const IconButton = (props: IconButtonProps) => {
   return (
     <div className={styles.button} onClick={props.onClick}>
       {props.children}
