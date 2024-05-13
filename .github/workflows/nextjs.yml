@@ -73,6 +73,8 @@ jobs:
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+      - name: Setup env file
+        run: sed "s|^COINGECKO_DEMO_API_KEY=.*|COINGECKO_DEMO_API_KEY=\"${{ secrets.COINGECKO_DEMO_API_KEY }}\"|" .env.example > .env
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
       - name: Upload artifact
