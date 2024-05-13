@@ -1,7 +1,7 @@
 import DetailsView from "@components/details";
 import List from "@components/list";
 import { ListItemSelectFunc } from "@components/list-item";
-import { ReactNode, useState } from "react";
+import { useState } from "react";
 
 import styles from "./styles.module.css";
 
@@ -14,7 +14,7 @@ const Dashboard = (props: DashboardProps) => {
   const [showDetails, setShowDetails] = useState<boolean>(false);
   const [selectedCoinId, setSelectedCoinId] = useState<string>("");
 
-  const listItemSelectHandler: ListItemSelectFunc = (coinId: string): void => {
+  const listItemSelectHandler: ListItemSelectFunc = (coinId: string) => {
     setDetailsOpacity(1);
     setShowDetails(true);
     setSelectedCoinId(coinId);
@@ -31,7 +31,10 @@ const Dashboard = (props: DashboardProps) => {
   return (
     <div className={styles.dashboard}>
       <div className={styles.content}>
-        <List currency={props.currency} onListItemSelect={listItemSelectHandler} />
+        <List
+          currency={props.currency}
+          onListItemSelect={listItemSelectHandler}
+        />
 
         <div
           className={styles["details-container"]}

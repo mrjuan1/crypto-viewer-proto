@@ -16,7 +16,9 @@
 
   --logo-colour: #eed49f /* yellow */;
 
+  /* Icons obtained from Google Material Icons website */
   --close-icon: url("/close.svg");
+  --dropdown-icon: url("/dropdown.svg");
 }
 
 /* @media (prefers-color-scheme: dark) {

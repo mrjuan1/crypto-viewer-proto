@@ -55,9 +55,7 @@ const List = (props: ListProps) => {
     if (isLoading) {
       return;
     } else {
-      // Fade out animation for loader is 500ms.
-      // Giving it double that before nuking it altogether
-      setTimeout(() => setHaveLoader(false), 1000);
+      setTimeout(() => setHaveLoader(false), 600);
     }
 
     if (error || !data || data.length === 0) {

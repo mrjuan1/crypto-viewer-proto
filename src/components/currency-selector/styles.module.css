@@ -1,0 +1,98 @@
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.loader-container {
+  position: relative;
+  top: 2rem;
+
+  opacity: 0;
+
+  animation: fade-in ease 0.5s;
+  animation-fill-mode: forwards;
+}
+
+.fade-out {
+  animation: fade-out ease 0.5s;
+}
+
+.error {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--error);
+}
+
+.selector {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  border-radius: 1rem;
+  padding: 0.5rem;
+
+  opacity: 0;
+  cursor: pointer;
+
+  transition: all ease 0.3s;
+
+  animation: fade-in ease 0.5s;
+  animation-fill-mode: forwards;
+}
+
+.selector:hover {
+  background: var(--background);
+}
+
+.dropdown-icon {
+  background: var(--dropdown-icon) center no-repeat;
+
+  min-width: 1rem;
+  max-width: 1rem;
+  min-height: 1rem;
+  max-height: 1rem;
+
+  rotate: 0deg;
+  transition: rotate ease 0.5s;
+}
+
+.list {
+  background: var(--surface);
+  border-radius: 1rem;
+  box-shadow: 0 0 20px var(--shadow);
+
+  height: 30rem;
+
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+
+  overflow: hidden;
+  overflow-y: auto;
+
+  transition: all ease 0.3s;
+}
+
+.list-item {
+  padding: 0.5rem 1rem;
+
+  cursor: pointer;
+  transition: background ease 0.2s;
+}
+
+.list-item:hover {
+  background: var(--background);
+}
