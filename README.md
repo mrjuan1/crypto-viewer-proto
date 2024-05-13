@@ -4,6 +4,8 @@ Simple app for viewing information about cryptocurrencies.
 
 This app was meant as an assignment and is more of an incomplete prototype then an actual useful application.
 
+Also, there are bugs here and there that can break the app and require a refresh.
+
 ## Setup
 
 ```sh
