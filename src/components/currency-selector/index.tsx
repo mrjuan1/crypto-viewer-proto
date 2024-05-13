@@ -80,7 +80,7 @@ const CurrencySelector = (props: CurrencySelectorProps) => {
           <div
             className={styles.list}
             style={{
-              zIndex: showList ? 0 : -1,
+              zIndex: showList ? 1 : -1,
               opacity: showList ? 1 : 0,
             }}
           >
