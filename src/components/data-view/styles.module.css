@@ -25,6 +25,13 @@
   animation: fade-in ease 0.5s;
 }
 
+.close-icon {
+  background: var(--close-icon) center no-repeat;
+
+  width: 3rem;
+  height: 3rem;
+}
+
 .content {
   min-width: 320px;
   height: calc(100% - 4rem);

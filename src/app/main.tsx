@@ -14,7 +14,11 @@ interface MainProps {
 
 const Main = (props: MainProps): ReactNode => (
   <SWRConfig value={{ fetcher: getFetcher(props.apiDetails) }}>
-    <Titlebar title={props.title} logoURL={props.logoURL} />
+    <Titlebar
+      title={props.title}
+      logoURL={props.logoURL}
+      actionsArea="ZAR" // TODO: Add currency selector
+    />
     <Dashboard />
   </SWRConfig>
 );

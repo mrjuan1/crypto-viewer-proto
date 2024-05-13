@@ -2,6 +2,7 @@ import Titlebar from "@components/titlebar";
 import { ReactNode, useEffect, useState } from "react";
 
 import styles from "./styles.module.css";
+import IconButton from "@components/icon-button";
 
 interface KeyPair<T = unknown> {
   [key: string]: T;
@@ -72,11 +73,18 @@ const DetailsDataView = (props: DetailsDataViewProps): ReactNode => {
     }
   };
 
+  const closeButton: ReactNode = (
+    <IconButton onClick={props.onCloseRequest}>
+      <div className={styles['close-icon']}></div>
+    </IconButton>
+  );
+
   return (
     <div className={styles.container} tabIndex={0} onKeyUp={keyUpHandler}>
       <Titlebar
         logoURL={props.data.image.large.replace("/large/", "/standard/")}
         title={`${props.data.name} (${props.data.symbol.toUpperCase()})`}
+        actionsArea={closeButton}
       />
 
       <div className={styles.content}>
