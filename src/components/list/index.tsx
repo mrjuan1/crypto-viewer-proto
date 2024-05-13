@@ -26,6 +26,7 @@ const LIST_ITEM_FADE_MS_MULTIPLIER: number = 125;
 
 const List = (props: ListProps): ReactNode => {
   const [haveLoader, setHaveLoader] = useState<boolean>(true);
+  const [errorMessage, setErrorMessage] = useState<string>("");
   const [listItems, setListItems] = useState<ReactNode[]>([]);
 
   const { isLoading, error, data } = useSWR<CoinMarketResponse[]>(
@@ -41,54 +42,54 @@ const List = (props: ListProps): ReactNode => {
       setTimeout(() => setHaveLoader(false), 1000);
     }
 
-    // TODO: Implement visual error notification(s)
-    if (error) {
-      console.error(error);
-      return;
-    }
+    if (error || !data || data.length === 0) {
+      if (error) {
+        console.error(error);
+      }
 
-    if (!data || data.length === 0) {
-      console.error("No data returned");
-      return;
-    }
-
-    if (data) {
-      const listItemComponents: ReactNode[] = data.map<ReactNode>(
-        (entry: CoinMarketResponse, index: number) => (
-          <ListItem
-            key={`list-item-${index}`}
-            fadeInDelay={`${index * LIST_ITEM_FADE_MS_MULTIPLIER}ms`}
-            coinId={entry.id}
-            logoURL={entry.image}
-            name={entry.name}
-            currency={props.currency}
-            price={entry.current_price}
-            changes={{
-              price24h: entry.price_change_24h,
-              pricePercent24h: entry.price_change_percentage_24h,
-              pricePercent7d: entry.price_change_percentage_7d_in_currency,
-            }}
-            marketCap={entry.market_cap}
-            onSelect={props.onListItemSelect}
-          />
-        ),
+      setErrorMessage(
+        "Failed to get the list of cryptocurrencies. Please refresh and try again.",
       );
 
-      setListItems(listItemComponents);
+      return;
     }
+
+    const listItemComponents: ReactNode[] = data.map<ReactNode>(
+      (entry: CoinMarketResponse, index: number) => (
+        <ListItem
+          key={`list-item-${index}`}
+          fadeInDelay={`${index * LIST_ITEM_FADE_MS_MULTIPLIER}ms`}
+          coinId={entry.id}
+          logoURL={entry.image}
+          name={entry.name}
+          currency={props.currency}
+          price={entry.current_price}
+          changes={{
+            price24h: entry.price_change_24h,
+            pricePercent24h: entry.price_change_percentage_24h,
+            pricePercent7d: entry.price_change_percentage_7d_in_currency,
+          }}
+          marketCap={entry.market_cap}
+          onSelect={props.onListItemSelect}
+        />
+      ),
+    );
+
+    setListItems(listItemComponents);
   }, [isLoading, error, data, props.currency, props.onListItemSelect]);
 
   return (
     <div className={styles.container}>
-      {haveLoader && (
+      {haveLoader ? (
         <div
           className={`${styles.loader}${isLoading ? "" : ` ${styles["loader-fade-out"]}`}`}
         >
           <Loader />
         </div>
+      ) : (
+        (errorMessage && <div className={styles.error}>{errorMessage}</div>) ||
+        (listItems && <div className={styles.list}>{listItems}</div>)
       )}
-
-      <div className={styles.list}>{listItems}</div>
     </div>
   );
 };
